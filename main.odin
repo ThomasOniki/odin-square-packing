@@ -116,6 +116,9 @@ WINDOW_SIZE :: 800
 WINDOW_PADDING :: WINDOW_SIZE / 8
 WINDOW_SIZE_PADDED :: WINDOW_SIZE - WINDOW_PADDING * 2
 
+BACKGROUND_COLOR: raylib.Color = {0, 0, 0, 255}
+COLOR: raylib.Color = {255, 255, 255, 255}
+
 main :: proc() {
 	squares: Squares = {}
 
@@ -164,6 +167,8 @@ main :: proc() {
 	)
 	raylib.InitWindow(WINDOW_SIZE, WINDOW_SIZE, title)
 
+	raylib.ClearBackground(BACKGROUND_COLOR)
+
 	rlgl.DisableBackfaceCulling()
 
 	raylib.BeginDrawing()
@@ -175,7 +180,7 @@ main :: proc() {
 		{WINDOW_SIZE - WINDOW_PADDING, WINDOW_PADDING},
 		{WINDOW_PADDING, WINDOW_PADDING},
 	}
-	raylib.DrawLineStrip(&box_points[0], len(box_points), WHITE)
+	raylib.DrawLineStrip(&box_points[0], len(box_points), COLOR)
 
 	for square in min_squares {
 		corners := square_corners(square)
@@ -189,7 +194,7 @@ main :: proc() {
 		}
 		positions[4] = positions[0]
 
-		raylib.DrawLineStrip(&positions[0], 5, {255, 255, 255, 255})
+		raylib.DrawLineStrip(&positions[0], 5, COLOR)
 	}
 
 	raylib.EndDrawing()
