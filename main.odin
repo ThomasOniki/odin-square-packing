@@ -154,7 +154,12 @@ main :: proc() {
 		}
 	}
 
-	raylib.InitWindow(WINDOW_SIZE, WINDOW_SIZE, "minimum layout")
+	title := fmt.caprintf(
+		"best %v-square packing (%v units wide/long)",
+		SQUARE_COUNT,
+		f32(min_size) / UNIT,
+	)
+	raylib.InitWindow(WINDOW_SIZE, WINDOW_SIZE, title)
 
 	rlgl.DisableBackfaceCulling()
 
