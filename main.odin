@@ -131,7 +131,10 @@ main :: proc() {
 		if !check_collisions(squares) {
 			borders := get_box_borders(squares)
 			size := math.max(borders.size.x, borders.size.y)
-			if size < min_size {
+			if size < min_size ||
+			   (size == min_size &&
+					   (borders.size.x < min_borders.size.x ||
+							   borders.size.y < min_borders.size.y)) {
 				min_size = size
 				min_borders = borders
 				min_squares = squares
