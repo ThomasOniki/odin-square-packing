@@ -39,6 +39,9 @@ square_corners :: proc "contextless" (square: Square) -> [4]U32x2 {
 Line :: [2]U32x2
 
 lines_cross :: proc(a: Line, b: Line) -> b32 {
+	if a == b || a == {b[1], b[0]} {
+		return false
+	}
 	diff0 := cast([2]i64)b[0] - cast([2]i64)a[0]
 	diff1 := cast([2]i64)b[1] - cast([2]i64)a[1]
 	dot0 := diff0.x * diff1.x + diff0.y * diff1.y
