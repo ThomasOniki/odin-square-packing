@@ -110,6 +110,8 @@ CENTER_OFFSET :: UNIT * 2
 SIZE :: UNIT * SQUARE_COUNT * 2
 
 WINDOW_SIZE :: 800
+WINDOW_PADDING :: WINDOW_SIZE / 8
+WINDOW_SIZE_PADDED :: WINDOW_SIZE - WINDOW_PADDING * 2
 
 main :: proc() {
 	squares: Squares = {}
@@ -161,7 +163,8 @@ main :: proc() {
 		positions: [5][2]f32
 		for i in 0 ..< 4 {
 			positions[i] =
-				cast([2]f32)(corners[i] - min_borders.pos) / cast(f32)min_size * WINDOW_SIZE
+				WINDOW_PADDING +
+				cast([2]f32)(corners[i] - min_borders.pos) / cast(f32)min_size * WINDOW_SIZE_PADDED
 			positions[i].y = WINDOW_SIZE - positions[i].y
 		}
 		positions[4] = positions[0]
