@@ -168,6 +168,15 @@ main :: proc() {
 
 	raylib.BeginDrawing()
 
+	box_points: [5][2]f32 = {
+		{WINDOW_PADDING, WINDOW_PADDING},
+		{WINDOW_PADDING, WINDOW_SIZE - WINDOW_PADDING},
+		{WINDOW_SIZE - WINDOW_PADDING, WINDOW_SIZE - WINDOW_PADDING},
+		{WINDOW_SIZE - WINDOW_PADDING, WINDOW_PADDING},
+		{WINDOW_PADDING, WINDOW_PADDING},
+	}
+	raylib.DrawLineStrip(&box_points[0], len(box_points), WHITE)
+
 	for square in min_squares {
 		corners := square_corners(square)
 
