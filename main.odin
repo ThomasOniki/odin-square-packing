@@ -5,7 +5,7 @@ import "core:math"
 import "vendor:raylib"
 import "vendor:raylib/rlgl"
 
-SQUARE_COUNT :: 3
+SQUARE_COUNT :: 2
 UNIT :: 8
 FULL_CIRCLE :: 8
 
